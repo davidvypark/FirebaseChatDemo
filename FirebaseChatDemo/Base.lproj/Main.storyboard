@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jzi-Lr-woH">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Chat-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flatiron.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="CoP-Is-9ad">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcP-1E-QcY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qrT-4a-0iY">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QR2-gQ-sLv">
+                                <rect key="frame" x="0.0" y="55" width="600" height="501"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="nIF-kg-QGD" kind="embed" id="u8o-LC-OB0"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gH2-F2-usj" userLabel="Message Bar View">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFC-TK-1dl">
+                                        <rect key="frame" x="8" y="0.0" width="539" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm1-N2-2nf">
+                                        <rect key="frame" x="555" y="8" width="37" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="Send"/>
+                                        <connections>
+                                            <action selector="_sendButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZPc-Xg-joD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CNt-6s-Bmv"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fm1-N2-2nf" secondAttribute="bottom" constant="6" id="DMm-nc-dL4"/>
+                                    <constraint firstItem="Fm1-N2-2nf" firstAttribute="top" secondItem="gH2-F2-usj" secondAttribute="top" constant="8" id="DdP-jU-bvp"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fm1-N2-2nf" secondAttribute="trailing" constant="8" id="JYS-Mj-kkM"/>
+                                    <constraint firstItem="NFC-TK-1dl" firstAttribute="top" secondItem="gH2-F2-usj" secondAttribute="top" id="SnV-Qd-jQy"/>
+                                    <constraint firstAttribute="bottom" secondItem="NFC-TK-1dl" secondAttribute="bottom" id="UCe-47-U68"/>
+                                    <constraint firstItem="NFC-TK-1dl" firstAttribute="leading" secondItem="gH2-F2-usj" secondAttribute="leading" constant="8" id="eWq-R4-J4t"/>
+                                    <constraint firstItem="Fm1-N2-2nf" firstAttribute="leading" secondItem="NFC-TK-1dl" secondAttribute="trailing" constant="8" id="iCV-Zj-c4t"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VcP-1E-QcY" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="6kZ-cn-AYq"/>
+                            <constraint firstItem="CoP-Is-9ad" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="8kE-BM-ZNj"/>
+                            <constraint firstItem="CoP-Is-9ad" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DJW-j4-7Wy"/>
+                            <constraint firstItem="CoP-Is-9ad" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="ECl-cF-EXT"/>
+                            <constraint firstAttribute="trailing" secondItem="QR2-gQ-sLv" secondAttribute="trailing" id="OUq-Xk-Jvu"/>
+                            <constraint firstItem="VcP-1E-QcY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PSm-Hi-lcP"/>
+                            <constraint firstItem="QR2-gQ-sLv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="55" id="TB9-lH-MBx"/>
+                            <constraint firstAttribute="trailing" secondItem="gH2-F2-usj" secondAttribute="trailing" id="Xh6-2T-Bud"/>
+                            <constraint firstItem="VcP-1E-QcY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="blw-K0-Or5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gH2-F2-usj" secondAttribute="bottom" id="fIO-CG-58r"/>
+                            <constraint firstItem="gH2-F2-usj" firstAttribute="top" secondItem="QR2-gQ-sLv" secondAttribute="bottom" id="lvk-Q1-eeO"/>
+                            <constraint firstItem="QR2-gQ-sLv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o1B-iD-Lak"/>
+                            <constraint firstItem="CoP-Is-9ad" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qW1-DA-8kC"/>
+                            <constraint firstItem="VcP-1E-QcY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qfW-dQ-NSD"/>
+                            <constraint firstItem="gH2-F2-usj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ql2-Ng-ASc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chat" id="Fwb-mk-BKH"/>
+                    <connections>
+                        <outlet property="messageBarViewBottomOffsetContraint" destination="fIO-CG-58r" id="KJ7-2M-W4W"/>
+                        <outlet property="messageTextField" destination="NFC-TK-1dl" id="GqO-8u-1nP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217" y="400"/>
+        </scene>
+        <!--Chat Table View Controller-->
+        <scene sceneID="au2-Vn-U2Y">
+            <objects>
+                <tableViewController id="nIF-kg-QGD" customClass="ChatTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lBA-mR-T5i">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="501"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatCell" id="MhD-I4-5A2">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MhD-I4-5A2" id="klF-yD-daP">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="nIF-kg-QGD" id="JZy-3D-EeI"/>
+                            <outlet property="delegate" destination="nIF-kg-QGD" id="A0g-Ua-RHw"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fjf-hZ-aHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902" y="399.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7wr-n0-VxT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jzi-Lr-woH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kOl-uR-QC5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JW8-ww-PmE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6av-6f-pI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="521" y="400"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="flatiron.jpg" width="2000" height="3008"/>
+    </resources>
+</document>
