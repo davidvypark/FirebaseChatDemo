@@ -51,20 +51,11 @@ static const NSString *kMessageIdKey = @"Message Id";
 	// Create a reference to the messages path
 	FIRDatabaseReference *chatReference = [[FIRDatabase database] referenceWithPath:@"/messages"];
 	
-	// Observe for any value changes at this endpoint
-	[chatReference observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-		if (snapshot.value && [snapshot.value isKindOfClass:[NSDictionary class]]) {
-			
-			NSDictionary *valueDictionary = (NSDictionary *)snapshot.value;
-			
-			NSLog(@"Value Dictionary: %@", valueDictionary);
-			
-			// Add any new messages
-			[self _addMessagesFromArray:valueDictionary.allValues];
+	// Listen for new messages
+	[self _listenForNewMessagesWithReference:chatReference];
 	
-			[self _alertDelegates];
-		}
-	}];
+	// Listen for deleted messages
+	[self _listenForDeletedMessagesWithReference:chatReference];
 }
 
 - (void)sendMessageFromSender:(NSString *)senderName withContent:(NSString *)content
@@ -92,19 +83,43 @@ static const NSString *kMessageIdKey = @"Message Id";
 	}
 }
 
-/**
- Adds any new messages pulled from Firebase. (i.e., only messages containing message ids that the current messages array does not have)
- */
-- (void)_addMessagesFromArray:(NSArray *)messageArray
+- (void)_listenForNewMessagesWithReference:(FIRDatabaseReference *)chatReference
 {
-	for (NSDictionary *messageDictionary in messageArray) {
-		NSPredicate *messageIdPredicate = [NSPredicate predicateWithFormat:@"self.messageId == %@", messageDictionary[kMessageIdKey]];
-		NSArray *filteredArray = [self.messages filteredArrayUsingPredicate:messageIdPredicate];
-		if (filteredArray.count == 0) {
-			// new message, add it to the array
-			[self.messages addObject:[self _createMessageFromDictionary:messageDictionary]];
+	[chatReference observeEventType:FIRDataEventTypeChildAdded withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		
+		if (snapshot.value) {
+			// Casting the value to a dictionary
+			NSDictionary *data = (NSDictionary *)snapshot.value;
+			
+			// Create a new message with the contents of the dictionary
+			Message *newMessage = [self _createMessageFromDictionary:data];
+			
+			// Add the new message to our array of messages
+			[self.messages addObject:newMessage];
+			
+			// Alert delegates of any changes
+			[self _alertDelegates];
 		}
-	}
+	}];
+}
+
+- (void)_listenForDeletedMessagesWithReference:(FIRDatabaseReference *)chatReference
+{
+	[chatReference observeEventType:FIRDataEventTypeChildRemoved withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+		if (snapshot.value) {
+			// Create a Message object from the data received from the database
+			Message *messageToRemove = [self _createMessageFromDictionary:snapshot.value];
+			
+			// Create a predicate to filter the array. We can a new array containing all messages that do NOT match the messageId of the message are removing
+			NSPredicate *removeMessagePredicate = [NSPredicate predicateWithFormat:@"self.messageId != %@", messageToRemove.messageId];
+			
+			// Filtering the array with the predicate. This should leave only the messages that we care about, removing the deleted message from the array.
+			[self.messages filterUsingPredicate:removeMessagePredicate];
+			
+			// Aler the delegate of any changes
+			[self _alertDelegates];
+		}
+	}];
 }
 
 - (Message *)_createMessageFromDictionary:(NSDictionary *)dictionary

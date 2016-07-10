@@ -18,7 +18,6 @@
 		C9FBC2B41D2ED5BF001DE010 /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FBC2B31D2ED5BF001DE010 /* ChatManager.m */; };
 		C9FBC2BB1D2F1639001DE010 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FBC2BA1D2F1639001DE010 /* Message.m */; };
 		C9FBC2BF1D2F3842001DE010 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9FBC2BE1D2F3842001DE010 /* ChatTableViewController.m */; };
-		C9FBC2C31D2FE344001DE010 /* flatiron.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9FBC2C21D2FE344001DE010 /* flatiron.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +40,6 @@
 		C9FBC2BA1D2F1639001DE010 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		C9FBC2BD1D2F3842001DE010 /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
 		C9FBC2BE1D2F3842001DE010 /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
-		C9FBC2C21D2FE344001DE010 /* flatiron.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = flatiron.jpg; sourceTree = "<group>"; };
 		F00EE27CD369B0CE01383E22 /* Pods-FirebaseChatDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseChatDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseChatDemo/Pods-FirebaseChatDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +83,6 @@
 				C9FBC2A01D2ED49B001DE010 /* ViewController.m */,
 				C9FBC2A21D2ED49B001DE010 /* Main.storyboard */,
 				C9FBC2A51D2ED49B001DE010 /* Assets.xcassets */,
-				C9FBC2C21D2FE344001DE010 /* flatiron.jpg */,
 				C9FBC2A71D2ED49B001DE010 /* LaunchScreen.storyboard */,
 				C9FBC2AA1D2ED49B001DE010 /* Info.plist */,
 				C9FBC2991D2ED49B001DE010 /* Supporting Files */,
@@ -204,7 +201,6 @@
 				C9FBC2A91D2ED49B001DE010 /* LaunchScreen.storyboard in Resources */,
 				C9FBC2B11D2ED4F4001DE010 /* GoogleService-Info.plist in Resources */,
 				C9FBC2A61D2ED49B001DE010 /* Assets.xcassets in Resources */,
-				C9FBC2C31D2FE344001DE010 /* flatiron.jpg in Resources */,
 				C9FBC2A41D2ED49B001DE010 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
