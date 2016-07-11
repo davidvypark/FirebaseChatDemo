@@ -44,7 +44,7 @@ typedef enum MessageBarPosition
 		return;
 	}
 	
-	[[ChatManager sharedManager] sendMessageFromSender:[UIDevice currentDevice].name
+	[[ChatManager sharedManager] sendMessageFrom:[UIDevice currentDevice].name
 																				 withContent:self.messageTextField.text];
 	self.messageTextField.text = @"";
 }

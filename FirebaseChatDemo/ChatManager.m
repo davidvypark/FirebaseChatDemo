@@ -58,7 +58,7 @@ static const NSString *kMessageIdKey = @"Message Id";
 	[self _listenForDeletedMessagesWithReference:chatReference];
 }
 
-- (void)sendMessageFromSender:(NSString *)senderName withContent:(NSString *)content
+- (void)sendMessageFrom:(NSString *)senderName withContent:(NSString *)content
 {
 	NSDictionary *messageInfo = @{kSenderNameKey : senderName,
 																kContentKey : content,
@@ -110,13 +110,16 @@ static const NSString *kMessageIdKey = @"Message Id";
 			// Create a Message object from the data received from the database
 			Message *messageToRemove = [self _createMessageFromDictionary:snapshot.value];
 			
-			// Create a predicate to filter the array. We can a new array containing all messages that do NOT match the messageId of the message are removing
-			NSPredicate *removeMessagePredicate = [NSPredicate predicateWithFormat:@"self.messageId != %@", messageToRemove.messageId];
+			// Create a predicate to filter the array.
+			// We can a new array containing all messages that do NOT match the messageId of the message are removing
+			NSPredicate *removeMessagePredicate = [NSPredicate predicateWithFormat:@"self.messageId != %@",
+																						 messageToRemove.messageId];
 			
-			// Filtering the array with the predicate. This should leave only the messages that we care about, removing the deleted message from the array.
+			// Filtering the array with the predicate.
+			// This should leave only the messages that we care about, removing the deleted message from the array.
 			[self.messages filterUsingPredicate:removeMessagePredicate];
 			
-			// Aler the delegate of any changes
+			// Alert the delegate of any changes
 			[self _alertDelegates];
 		}
 	}];

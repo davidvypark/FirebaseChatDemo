@@ -42,6 +42,6 @@
 /**
  @abstract Sends a message to the database.}
  */
-- (void)sendMessageFromSender:(NSString *)senderName withContent:(NSString *)content;
+- (void)sendMessageFrom:(NSString *)senderName withContent:(NSString *)content;
 
 @end
